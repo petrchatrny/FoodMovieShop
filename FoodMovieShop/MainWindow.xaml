@@ -7,6 +7,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.45*"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
+        <!-- CONTROL PANEL -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Content="Load From API" Margin="5" Padding="5" />
+            <Button Content="Add" Margin="5" Padding="5" />
+            <Button Content="Delete" Margin="5" Padding="5" />
+        </StackPanel>
+
+        <!-- LIST -->
+        <ListView Grid.Row="1" Grid.Column="0"/>
+
+        <!-- EDITOR -->
+        <ContentControl Grid.Row="1" Grid.Column="1" />
     </Grid>
 </Window>
