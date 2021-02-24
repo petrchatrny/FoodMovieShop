@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodMovieShop"
         xmlns:enum="clr-namespace:FoodMovieShop.Enum"
+        xmlns:sel="clr-namespace:FoodMovieShop.ContentTemplateSelectors"
         mc:Ignorable="d"
         Title="FoodMovieShop - ADMIN" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
+
+    <Window.Resources>
+        <sel:ShopItemEditorContentTemplateSelector x:Key="ShopItemEditorContentTemplateSelector"
+            FoodEditorTemplate="{StaticResource FoodEditorTemplate}"
+            MovieEditorTemplate="{StaticResource MovieEditorTemplate}" />
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -35,6 +42,7 @@
         <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ShopItems}" SelectedItem="{Binding SelectedShopItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- EDITOR -->
-        <ContentControl Grid.Row="1" Grid.Column="1" />
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding SelectedShopItem, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                        ContentTemplateSelector="{StaticResource ShopItemEditorContentTemplateSelector}"/>
     </Grid>
 </Window>

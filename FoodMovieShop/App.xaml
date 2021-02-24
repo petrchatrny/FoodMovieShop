@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:FoodMovieShop"
              xmlns:vm="clr-namespace:FoodMovieShop.ViewModel"
              xmlns:model="clr-namespace:FoodMovieShop.Model"
+             xmlns:editor="clr-namespace:FoodMovieShop.UserControls.Editors"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!-- Global ViewModel -->
@@ -55,6 +56,15 @@
                 <TextBlock Text="{Binding Price, StringFormat={}{0} €}" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" Margin="40 0 0 0"/>
             </Grid>
         </DataTemplate>
+        
+        <!-- Data templates for Editors in Admin window -->
+        <DataTemplate x:Key="FoodEditorTemplate">
+            <editor:FoodEditorUserControl />
+        </DataTemplate>
 
+        <DataTemplate x:Key="MovieEditorTemplate">
+            <editor:MovieEditorUserControl />
+        </DataTemplate>
+        
     </Application.Resources>
 </Application>
