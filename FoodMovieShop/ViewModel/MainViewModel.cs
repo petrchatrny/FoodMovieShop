@@ -52,10 +52,10 @@ namespace FoodMovieShop.ViewModel
             switch (type)
             {
                 case ShopItemType.Food:
-                    shopItem = new Food("New food", 0, "https://s3.amazonaws.com/vulture-food-photos/defaultvulture.png", 0, 0);
+                    shopItem = new Food("New food", 0, "https://i.pinimg.com/originals/5e/fa/77/5efa77186bd7ca39e06aae2bad562351.png", 0, 0);
                     break;
                 case ShopItemType.Movie:
-                    shopItem = new Movie("New Movie", 0, "https://media.comicbook.com/files/img/default-movie.png", 0, "unknown");
+                    shopItem = new Movie("New Movie", 0, "https://image.flaticon.com/icons/png/512/83/83519.png", 0, "unknown");
                     break;
             }
             if (shopItem != null) 
