@@ -1,4 +1,5 @@
-﻿using FoodMovieShop.ViewModel;
+﻿using FoodMovieShop.UserControls;
+using FoodMovieShop.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,12 @@ namespace FoodMovieShop
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow window = new CustomerWindow();
+            window.Show();
         }
     }
 }

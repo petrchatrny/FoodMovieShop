@@ -8,7 +8,8 @@
         xmlns:sel="clr-namespace:FoodMovieShop.ContentTemplateSelectors"
         mc:Ignorable="d"
         Title="FoodMovieShop - ADMIN" Height="450" Width="800"
-        DataContext="{Binding Source={StaticResource MainViewModel}}">
+        DataContext="{Binding Source={StaticResource MainViewModel}}"
+        Loaded="Window_Loaded">
 
     <Window.Resources>
         <sel:ShopItemEditorContentTemplateSelector x:Key="ShopItemEditorContentTemplateSelector"
