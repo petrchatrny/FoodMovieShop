@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodMovieShop"
         mc:Ignorable="d"
-        Title="FoodMovieShop - ADMIN" Height="450" Width="800">
+        Title="FoodMovieShop - ADMIN" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource MainViewModel}}">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -18,13 +20,13 @@
 
         <!-- CONTROL PANEL -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button Content="Load From API" Margin="5" Padding="5" />
-            <Button Content="Add" Margin="5" Padding="5" />
-            <Button Content="Delete" Margin="5" Padding="5" />
+            <Button Content="Load From API" Margin="5" Padding="5" Command="{Binding FetchDataFromApiCommand}"/>
+            <Button Content="Add" Margin="5" Padding="5" Command="{Binding AddShopItemCommand}" />
+            <Button Content="Delete" Margin="5" Padding="5" Command="{Binding DeleteShopItemCommand}" />
         </StackPanel>
 
         <!-- LIST -->
-        <ListView Grid.Row="1" Grid.Column="0"/>
+        <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding ShopItems}" SelectedItem="{Binding SelectedShopItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!-- EDITOR -->
         <ContentControl Grid.Row="1" Grid.Column="1" />

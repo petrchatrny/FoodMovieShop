@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:FoodMovieShop"
+             xmlns:vm="clr-namespace:FoodMovieShop.ViewModel"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <vm:MainViewModel x:Key="MainViewModel" />
     </Application.Resources>
 </Application>
