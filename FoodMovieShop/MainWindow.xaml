@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodMovieShop"
+        xmlns:enum="clr-namespace:FoodMovieShop.Enum"
         mc:Ignorable="d"
         Title="FoodMovieShop - ADMIN" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,9 +21,14 @@
 
         <!-- CONTROL PANEL -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Button Content="Load From API" Margin="5" Padding="5" Command="{Binding FetchDataFromApiCommand}"/>
-            <Button Content="Add" Margin="5" Padding="5" Command="{Binding AddShopItemCommand}" />
-            <Button Content="Delete" Margin="5" Padding="5" Command="{Binding DeleteShopItemCommand}" />
+            <Menu>
+                <MenuItem Header="Add">
+                    <MenuItem Header="Food" Command="{Binding AddShopItemCommand}" CommandParameter="{x:Static enum:ShopItemType.Food}" />
+                    <MenuItem Header="Movie" Command="{Binding AddShopItemCommand}" CommandParameter="{x:Static enum:ShopItemType.Movie}" />
+                </MenuItem>
+                <MenuItem Header="Delete" Command="{Binding DeleteShopItemCommand}" />
+                <MenuItem Header="Load From API" Command="{Binding FetchDataFromApiCommand}"/>
+            </Menu>
         </StackPanel>
 
         <!-- LIST -->

@@ -1,4 +1,5 @@
-﻿using FoodMovieShop.Model;
+﻿using FoodMovieShop.Enum;
+using FoodMovieShop.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -33,24 +34,35 @@ namespace FoodMovieShop.ViewModel
 
         // commands
         public RelayCommand FetchDataFromApiCommand { get; private set; }
-        public RelayCommand AddShopItemCommand { get; private set; }
+        public RelayCommand<ShopItemType> AddShopItemCommand { get; private set; }
         public RelayCommand DeleteShopItemCommand { get; private set; }
 
         // constructor
         public MainViewModel()
         {
             this.ShopItems = new ObservableCollection<ShopItem>();
-            this.AddShopItemCommand = new RelayCommand(AddShopItem);
+            this.AddShopItemCommand = new RelayCommand<ShopItemType>(AddShopItem);
             this.DeleteShopItemCommand = new RelayCommand(DeleteShopItem, () => SelectedShopItem != null);
         }
 
         // methods
-        private void AddShopItem() 
+        private void AddShopItem(ShopItemType type)
         {
-            var shopItem = new Food("maso", 50, "fasfsafsadf", 10, 15);
-
-            ShopItems.Add(shopItem);
-            SelectedShopItem = shopItem;
+            ShopItem shopItem = null;
+            switch (type)
+            {
+                case ShopItemType.Food:
+                    shopItem = new Food("New food", 0, "https://s3.amazonaws.com/vulture-food-photos/defaultvulture.png", 0, 0);
+                    break;
+                case ShopItemType.Movie:
+                    shopItem = new Movie("New Movie", 0, "https://media.comicbook.com/files/img/default-movie.png", 0, "unknown");
+                    break;
+            }
+            if (shopItem != null) 
+            {
+                ShopItems.Add(shopItem);
+                SelectedShopItem = shopItem;
+            }
         }
 
         private void DeleteShopItem()
