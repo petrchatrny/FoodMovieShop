@@ -1,11 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FoodMovieShop.Model
 {
-    public abstract class ShopItem : ObservableObject
+	public abstract class ShopItem : ObservableObject
     {
         private string name;
         public string Name
@@ -21,18 +18,26 @@ namespace FoodMovieShop.Model
             set { Set(() => Price, ref price, value); }
         }
 
+        private int inStock;
+        public int InStock 
+        {
+            get { return inStock; }
+            set { Set(() => InStock, ref inStock, value); }
+        }
+        
         private string imageLink;
 
-        public string ImageLink
+		public string ImageLink
         {
             get { return imageLink; }
             set { Set(() => ImageLink, ref imageLink, value); }
         }
 
-        protected ShopItem(string name, int price, string imageLink)
+        protected ShopItem(string name, int price, int inStock, string imageLink)
         {
             Name = name;
             Price = price;
+            InStock = inStock;
             ImageLink = imageLink;
         }
     }

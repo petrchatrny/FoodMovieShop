@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FoodMovieShop.Model
+﻿namespace FoodMovieShop.Model
 {
-    public class Movie : ShopItem
+	public class Movie : ShopItem
     {
         private int lenght;
         public int Lenght
@@ -20,7 +16,7 @@ namespace FoodMovieShop.Model
             set { Set(() => Director, ref director, value); }
         }
 
-        public Movie(string name, int price, string imageLink, int lenght, string director) : base(name, price, imageLink)
+        public Movie(string name, int price, int inStock, string imageLink, int lenght, string director) : base(name, price, inStock, imageLink)
         {
             Lenght = lenght;
             Director = director;

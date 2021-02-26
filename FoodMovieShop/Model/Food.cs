@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FoodMovieShop.Model
+﻿namespace FoodMovieShop.Model
 {
-    public class Food : ShopItem
+	public class Food : ShopItem
     {
-        private int ammount;
-        public int Ammount
+        private int servings;
+        public int Servings
         {
-            get { return ammount; }
-            set { Set(() => Ammount, ref ammount, value); }
+            get { return servings; }
+            set { Set(() => Servings, ref servings, value); }
         }
 
         private int readyInMinutes;
@@ -21,9 +17,9 @@ namespace FoodMovieShop.Model
             set { Set(() => ReadyInMinutes, ref readyInMinutes, value); }
         }
 
-        public Food(string name, int price, string imageLink, int ammount, int readyInMinutes) : base(name, price, imageLink)
+        public Food(string name, int price, int inStock, string imageLink, int ammount, int readyInMinutes) : base(name, price, inStock, imageLink)
         {
-            Ammount = ammount;
+            Servings = ammount;
             ReadyInMinutes = readyInMinutes;
         }
     }

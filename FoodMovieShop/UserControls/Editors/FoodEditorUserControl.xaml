@@ -14,14 +14,17 @@
         <TextBlock Text="Price" Margin="10 0"/>
         <TextBox Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
-        <TextBlock Text="Image URL" Margin="10 0" />
+		<TextBlock Text="In stock" Margin="10 0" />
+		<TextBox Text="{Binding InStock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
+
+		<TextBlock Text="Image URL" Margin="10 0" />
         <TextBox Text="{Binding ImageLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
         <TextBlock Text="Preparation time" Margin="10 0" />
         <TextBox Text="{Binding ReadyInMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
-        <TextBlock Text="Ammount" Margin="10 0" />
-        <TextBox Text="{Binding Ammount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
+        <TextBlock Text="Servings" Margin="10 0" />
+        <TextBox Text="{Binding Servings, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
     </StackPanel>
 </UserControl>
