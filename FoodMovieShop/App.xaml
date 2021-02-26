@@ -5,16 +5,22 @@
              xmlns:vm="clr-namespace:FoodMovieShop.ViewModel"
              xmlns:model="clr-namespace:FoodMovieShop.Model"
              xmlns:editor="clr-namespace:FoodMovieShop.UserControls.Editors"
+			 xmlns:conv="clr-namespace:FoodMovieShop.Converters"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!-- Global ViewModel -->
         <vm:MainViewModel x:Key="MainViewModel" />
-        
-        <!-- Data templates for ShopItems in Admin window-->
-        <DataTemplate DataType="{x:Type model:Food}">
-            <Grid Background="CornflowerBlue">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*"/>
+		
+		<!-- Converters -->
+		<conv:InStockToBackgroundColorConverter x:Key="BackgroundConverter" />
+		<conv:StringToIntConverter x:Key="StringToIntConverter" />
+
+		<!-- Data templates for ShopItems in Admin window-->
+		<!-- UpdateSourceTrigger is triggered only once, idk why -->
+		<DataTemplate DataType="{x:Type model:Food}">
+			<Grid Background="{Binding Path=., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BackgroundConverter}}">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.3*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
@@ -27,15 +33,15 @@
                 <Image Source="{Binding ImageLink}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Width="50" Height="50" Margin="10"/>
                 
                 <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="0" FontSize="20"/>
-                <TextBlock Text="{Binding InStock, StringFormat={}In stock: {0}}" Grid.Column="1" Grid.Row="1"/>
+				<TextBlock Text="{Binding InStock, StringFormat={}In stock: {0}}" Grid.Column="1" Grid.Row="1"/>
                 <TextBlock Text="{Binding ReadyInMinutes, StringFormat={}Ready in : {0} minutes}" Grid.Column="1" Grid.Row="2"/>
 
                 <TextBlock Text="{Binding Price, StringFormat={}{0} €}" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" Margin="40 0 0 0"/>
             </Grid>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type model:Movie}">
-            <Grid Background="IndianRed">
+		<DataTemplate DataType="{x:Type model:Movie}">
+			<Grid Background="{Binding Path=., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BackgroundConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.3*"/>
                     <ColumnDefinition Width="auto"/>

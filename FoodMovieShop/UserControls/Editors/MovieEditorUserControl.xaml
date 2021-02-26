@@ -12,16 +12,16 @@
         <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
         <TextBlock Text="Price" Margin="10 0"/>
-        <TextBox Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
+		<TextBox Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToIntConverter}}" Margin="10 0 10 20" />
 
 		<TextBlock Text="In Stock" Margin="10 0"/>
-		<TextBox Text="{Binding InStock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
+		<TextBox Text="{Binding InStock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToIntConverter}}" Margin="10 0 10 20" />
 
 		<TextBlock Text="Image URL" Margin="10 0" />
         <TextBox Text="{Binding ImageLink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
 
         <TextBlock Text="Lenght" Margin="10 0" />
-        <TextBox Text="{Binding Lenght, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
+		<TextBox Text="{Binding Lenght, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StringToIntConverter}}" Margin="10 0 10 20" />
 
         <TextBlock Text="Director" Margin="10 0" />
         <TextBox Text="{Binding Director, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10 0 10 20" />
