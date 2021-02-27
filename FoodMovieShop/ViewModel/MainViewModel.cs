@@ -53,8 +53,13 @@ namespace FoodMovieShop.ViewModel
             switch (type) 
             {
                 case ShopItemType.Food:
-                    FoodAPI api = new FoodAPI();
-                    api.GetRandomFood(5).ForEach(ShopItems.Add);
+                    FoodAPI foodAPI = new FoodAPI();
+                    foodAPI.GetRandomFood(5).ForEach(ShopItems.Add);
+                    break;
+
+                case ShopItemType.Movie:
+                    MovieAPI movieAPI = new MovieAPI();
+                    ShopItems.Add(movieAPI.GetRandomMovie());
                     break;
             }
         }
