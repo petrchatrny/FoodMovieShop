@@ -35,7 +35,10 @@
                     <MenuItem Header="Movie" Command="{Binding AddShopItemCommand}" CommandParameter="{x:Static enum:ShopItemType.Movie}" />
                 </MenuItem>
                 <MenuItem Header="Delete" Command="{Binding DeleteShopItemCommand}" />
-                <MenuItem Header="Load From API" Command="{Binding FetchDataFromApiCommand}"/>
+                <MenuItem Header="Load From API">
+                    <MenuItem Header="Load food" Command="{Binding FetchDataFromApiCommand}" />
+                    <MenuItem Header="Load movies" Command="{Binding FetchDataFromApiCommand}" />
+                </MenuItem>
             </Menu>
         </StackPanel>
 

@@ -1,5 +1,6 @@
 ﻿using FoodMovieShop.Enum;
 using FoodMovieShop.Model;
+using FoodMovieShop.RemoteData;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -33,7 +34,7 @@ namespace FoodMovieShop.ViewModel
         }
 
         // commands
-        public RelayCommand FetchDataFromApiCommand { get; private set; }
+        public RelayCommand<ShopItemType> FetchDataFromApiCommand { get; private set; }
         public RelayCommand<ShopItemType> AddShopItemCommand { get; private set; }
         public RelayCommand DeleteShopItemCommand { get; private set; }
 
@@ -41,11 +42,23 @@ namespace FoodMovieShop.ViewModel
         public MainViewModel()
         {
             this.ShopItems = new ObservableCollection<ShopItem>();
+            this.FetchDataFromApiCommand = new RelayCommand<ShopItemType>(FetchDataFromApi);
             this.AddShopItemCommand = new RelayCommand<ShopItemType>(AddShopItem);
             this.DeleteShopItemCommand = new RelayCommand(DeleteShopItem, () => SelectedShopItem != null);
         }
 
         // methods
+        private void FetchDataFromApi(ShopItemType type) 
+        {
+            switch (type) 
+            {
+                case ShopItemType.Food:
+                    FoodAPI api = new FoodAPI();
+                    api.GetRandomFood(5).ForEach(ShopItems.Add);
+                    break;
+            }
+        }
+
         private void AddShopItem(ShopItemType type)
         {
             ShopItem shopItem = null;
