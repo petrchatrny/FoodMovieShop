@@ -3,7 +3,9 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace FoodMovieShop.RemoteData
 {
@@ -35,9 +37,14 @@ namespace FoodMovieShop.RemoteData
         {
             Random random = new Random();
             var data = JObject.Parse(response);
+
+            // get lenght from mixed data (numbers in integer are polluted by string, it is caused by trash API, but its free)
+            string pollutedLenght = (string) data["Runtime"];
+            int lenght = int.Parse(string.Concat(pollutedLenght.Where(char.IsNumber)));
+
             return new Movie(
-                (string) data["Title"], random.Next(100, 2000), random.Next(0, 2000), 
-                (string) data["Poster"], 0, (string) data["Director"]);
+                (string) data["Title"], random.Next(100, 2000), random.Next(0, 2000),
+                (string) data["Poster"], lenght, (string) data["Director"]);
         }
     }
 }
