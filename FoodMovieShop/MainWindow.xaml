@@ -40,8 +40,8 @@
                     <MenuItem Header="Load movie" Command="{Binding FetchDataFromApiCommand}" CommandParameter="{x:Static enum:ShopItemType.Movie}"/>
                 </MenuItem>
                 <MenuItem Header="Sort by stock">
-                    <MenuItem Header="ASC" />
-                    <MenuItem Header="DESC" />
+                    <MenuItem Header="ASC" Command="{Binding SortShopItemsCommand}" CommandParameter="{x:Static enum:SortType.ASC}"/>
+                    <MenuItem Header="DESC" Command="{Binding SortShopItemsCommand}" CommandParameter="{x:Static enum:SortType.DESC}"/>
                 </MenuItem>
             </Menu>
         </StackPanel>

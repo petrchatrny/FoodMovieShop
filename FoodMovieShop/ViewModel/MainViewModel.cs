@@ -37,6 +37,7 @@ namespace FoodMovieShop.ViewModel
         public RelayCommand<ShopItemType> FetchDataFromApiCommand { get; private set; }
         public RelayCommand<ShopItemType> AddShopItemCommand { get; private set; }
         public RelayCommand DeleteShopItemCommand { get; private set; }
+        public RelayCommand<SortType> SortShopItemsCommand { get; private set; }
 
         // constructor
         public MainViewModel()
@@ -45,6 +46,7 @@ namespace FoodMovieShop.ViewModel
             this.FetchDataFromApiCommand = new RelayCommand<ShopItemType>(FetchDataFromApi);
             this.AddShopItemCommand = new RelayCommand<ShopItemType>(AddShopItem);
             this.DeleteShopItemCommand = new RelayCommand(DeleteShopItem, () => SelectedShopItem != null);
+            this.SortShopItemsCommand = new RelayCommand<SortType>(SortShopItems);
         }
 
         // methods
@@ -95,6 +97,19 @@ namespace FoodMovieShop.ViewModel
             if (ShopItems.Count > 0) 
             {
                 SelectedShopItem = ShopItems.Last();
+            }
+        }
+
+        private void SortShopItems(SortType type)
+        {
+            switch (type) 
+            {
+                case SortType.ASC:
+                    ShopItems = new ObservableCollection<ShopItem>(ShopItems.OrderBy(item => item.InStock));
+                    break;
+                case SortType.DESC:
+                    ShopItems = new ObservableCollection<ShopItem>(ShopItems.OrderByDescending(item => item.InStock));
+                    break;
             }
         }
     }
