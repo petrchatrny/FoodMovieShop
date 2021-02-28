@@ -39,6 +39,10 @@
                     <MenuItem Header="Load food" Command="{Binding FetchDataFromApiCommand}" CommandParameter="{x:Static enum:ShopItemType.Food}"/>
                     <MenuItem Header="Load movie" Command="{Binding FetchDataFromApiCommand}" CommandParameter="{x:Static enum:ShopItemType.Movie}"/>
                 </MenuItem>
+                <MenuItem Header="Sort by stock">
+                    <MenuItem Header="ASC" />
+                    <MenuItem Header="DESC" />
+                </MenuItem>
             </Menu>
         </StackPanel>
 

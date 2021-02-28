@@ -9,60 +9,50 @@
         Title="FoodMovieShop" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource MainViewModel}}">
 
-    <!-- LOCAL GRID DATA TEMPLATES -->
+    <!-- LOCAL DATA TEMPLATES -->
     <Window.Resources>
         <DataTemplate DataType="{x:Type model:Food}">
-            <Grid Background="CornflowerBlue" Margin="10">
+            <Grid Background="CornflowerBlue" Margin="10" MaxWidth="150" MinWidth="120" MinHeight="160">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Image Source="{Binding ImageLink}" Grid.Row="0" Width="100" Height="100"/>
+                <Image Source="{Binding ImageLink}" Grid.Row="0" Width="100" Height="100" Margin="10"/>
 
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <TextBlock Text="{Binding Name}"  FontSize="20"  VerticalAlignment="Center" TextAlignment="Center" Margin="10"/>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="{Binding Name}"  FontSize="12"  VerticalAlignment="Center" TextAlignment="Center" Margin="10" TextWrapping="Wrap" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Price, StringFormat={}{0} €}" VerticalAlignment="Center"  Margin="10"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type model:Movie}">
-            <Grid Background="IndianRed" Margin="10">
+            <Grid Background="IndianRed" Margin="10" MaxWidth="150" MinWidth="120"  MinHeight="160">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.8*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Image Source="{Binding ImageLink}" Grid.Row="0" Width="100" Height="100"/>
+                <Image Source="{Binding ImageLink}" Grid.Row="0" Width="100" Height="100" Margin="10"/>
 
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <TextBlock Text="{Binding Name}"  FontSize="20"  VerticalAlignment="Center" TextAlignment="Center" Margin="10"/>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="{Binding Name}" FontSize="12"  VerticalAlignment="Center" TextAlignment="Center" Margin="10" TextWrapping="Wrap" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Price, StringFormat={}{0} €}" VerticalAlignment="Center" Margin="10"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Window.Resources>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBox MinWidth="200"/>
-            <Button Content="Search" />
-            <Button Content="Sort" />
-        </StackPanel>
-
-        <ItemsControl ItemsSource="{Binding ShopItems}" Grid.Row="1">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        
+        <ItemsControl ItemsSource="{Binding ShopItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
-
-    </Grid>
+        
+    </ScrollViewer>
 </Window>
